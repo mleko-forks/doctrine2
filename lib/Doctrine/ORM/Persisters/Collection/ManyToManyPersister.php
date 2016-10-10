@@ -233,6 +233,7 @@ class ManyToManyPersister extends AbstractCollectionPersister
 
         foreach ($mapping['relationToSourceKeyColumns'] as $key => $value) {
             $whereClauses[] = sprintf('t.%s = ?', $key);
+            $value = $ownerMetadata->getFieldForColumn($value);
             $params[]       = $ownerMetadata->getFieldValue($owner, $value);
         }
 
